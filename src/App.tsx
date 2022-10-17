@@ -1,5 +1,11 @@
-import { useState } from "react";
+import { ThemeProvider } from "styled-components";
+
+import { defautTheme } from "./styles/themes/default";
 
 export function App() {
-	return <h1>Hello</h1>;
+	return (
+		<ThemeProvider theme={defautTheme}>
+			<h1>Hello</h1>
+		</ThemeProvider>
+	);
 }
