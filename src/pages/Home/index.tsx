@@ -21,7 +21,7 @@ export function Home() {
 				</FormContainer>
 
 				<CountDownContainer>
-					<span>0</span>
+					yar<span>0</span>
 					<span>0</span>
 					<Separator>:</Separator>
 					<span>0</span>
