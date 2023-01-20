@@ -12,6 +12,7 @@ import {
 	StartCountDownButton,
 	TaskInput,
 } from "./styles";
+import { useState } from "react";
 
 const newCicleFormValidateSchema = zod.object({
 	task: zod.string().min(1, "Informe uma Taks"),
@@ -23,7 +24,16 @@ interface NewCicleFormData {
 	minutesAmount: number;
 }
 
+interface Cycle {
+	id: string;
+	task: string;
+	minutesAmount: number;
+}
+
 export function Home() {
+	const [cycles, setCycle] = useState<Cycle[]>([]);
+	const [activeCyclesId, setActiveCyrcleid] = useState<string | null>(null);
+
 	const { register, handleSubmit, watch, reset } = useForm<NewCicleFormData>({
 		resolver: zodResolver(newCicleFormValidateSchema),
 		defaultValues: {
@@ -33,9 +43,21 @@ export function Home() {
 	});
 
 	function handleNewCreateCicle(data: NewCicleFormData) {
-		console.log(data);
+		const newCycle: Cycle = {
+			id: String(new Date().getTime()),
+			task: data.task,
+			minutesAmount: data.minutesAmount,
+		};
+
+		setCycle((state) => [...state, newCycle]);
+		setActiveCyrcleid(newCycle.id);
+
 		reset();
 	}
+
+	const activeCycle = cycles.find((cycle) => cycle.id === activeCyclesId);
+
+	console.log(activeCycle);
 
 	const task = watch("task");
 	const isButtonDisabled = !task;
