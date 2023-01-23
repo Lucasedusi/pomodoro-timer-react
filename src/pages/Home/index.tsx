@@ -85,6 +85,7 @@ export function Home() {
 					<datalist id="task-suggestions">
 						<option value="Projeto 01"></option>
 						<option value="Projeto 02"></option>
+						<option value="Projeto 03"></option>
 						<option value="Teste"></option>
 					</datalist>
 
