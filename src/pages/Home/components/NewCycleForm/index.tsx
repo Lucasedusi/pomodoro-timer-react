@@ -1,6 +1,29 @@
+import { useForm } from "react-hook-form";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
+
 import { FormContainer, MinutesAmountInput, TaskInput } from "./styles";
 
+const newCicleFormValidateSchema = zod.object({
+	task: zod.string().min(1, "Informe uma Taks"),
+	minutesAmount: zod.number().min(1).max(60),
+});
+
+interface NewCicleFormData {
+	task: string;
+	minutesAmount: number;
+}
+
 export function NewCycleForm() {
+	const { register, handleSubmit, watch, reset } = useForm<NewCicleFormData>({
+		resolver: zodResolver(newCicleFormValidateSchema),
+		defaultValues: {
+			task: "",
+			minutesAmount: 0,
+		},
+	});
+
 	return (
 		<FormContainer>
 			<label htmlFor="taks">Vou trabalhar em</label>
