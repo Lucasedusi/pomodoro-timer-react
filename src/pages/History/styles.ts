@@ -63,7 +63,7 @@ export const HistoryList = styled.div`
 `;
 
 const STATUS_COLORS = {
-	yellon: "yellow-500",
+	yellow: "yellow-500",
 	green: "green-500",
 	red: "red-500",
 } as const;

@@ -97,6 +97,8 @@ export function CyclesContextProvider({
 				createNewCycle,
 				interruptCurrentCycle,
 			}}
-		></CyclesContext.Provider>
+		>
+			{children}
+		</CyclesContext.Provider>
 	);
 }
